@@ -1,0 +1,17 @@
+# Start from a base Python 3 image
+FROM python:3.9
+
+# Set a directory for our application
+WORKDIR /app
+
+# Install necessary Python libraries
+RUN pip install scapy
+
+# Copy our Python script into the image
+COPY ./inquisitor.py /app
+
+# Add execution permissions to our Python script
+RUN chmod +x /app/inquisitor.py
+
+# Set the command to run our script when the container is started
+CMD ["python", "/app/inquisitor.py"]
